@@ -1,4 +1,5 @@
-﻿using Sinqia.Calculator.Domain.Dtos.Request;
+﻿using Sinqia.Calculator.Application.Exceptions;
+using Sinqia.Calculator.Domain.Dtos.Request;
 using Sinqia.Calculator.Domain.Dtos.Responses;
 using Sinqia.Calculator.Domain.Repositories.Cotacao;
 
@@ -6,16 +7,18 @@ namespace Sinqia.Calculator.Application.useCase.Investment;
 
 public class CalculateInvestmentUseCase : ICalculateInvestmentUseCase
 {
-    private readonly ICotacaoReadOnlyRepository _cotacaoRepository;
+    private readonly ICotacaoReadOnlyRepository _readOnlyRepository;
 
     public CalculateInvestmentUseCase(ICotacaoReadOnlyRepository cotacaoRepository)
     {
-        _cotacaoRepository = cotacaoRepository;
+        _readOnlyRepository = cotacaoRepository;
     }
 
     public async Task<CalculateInvestmentResponse> ExecuteAsync(CalculateInvestmentRequest request)
     {
-        var quotations = await _cotacaoRepository.GetByPeriodAsync(request.StartDate, request.EndDate);
+        await Validate(request);
+        
+        var quotations = await _readOnlyRepository.GetByPeriodAsync(request.StartDate, request.EndDate);
 
         var businessDays = FilterBusinessDays(quotations, request.StartDate, request.EndDate);
 
@@ -69,7 +72,21 @@ public class CalculateInvestmentUseCase : ICalculateInvestmentUseCase
 
     private decimal TruncateDecimal(decimal value, int decimals)
     {
-        decimal factor = (decimal)Math.Pow(10, decimals);
+        decimal factor = (decimal) Math.Pow(10, decimals);
         return Math.Truncate(value * factor) / factor;
+    }
+    
+    private async Task Validate(CalculateInvestmentRequest request)
+    {
+        var validator = new CalculateInvestmentValidator();
+
+        var result = await validator.ValidateAsync(request);
+        
+        if (!result.IsValid) 
+        {
+            var errorMessages = result.Errors.Select(e => e.ErrorMessage).ToList();
+
+            throw new ErrorOnValidationException(errorMessages);
+        }
     }
 }
