@@ -1,7 +1,6 @@
-﻿using Sinqia.Calculator.Domain.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
+﻿using Microsoft.EntityFrameworkCore;
 using Sinqia.Calculator.Domain.Entities;
+using Sinqia.Calculator.Domain.Repositories.Cotacao;
 
 namespace Sinqia.Calculator.Infrastructure.DataAccess.Repositories;
 
@@ -11,8 +10,12 @@ public class CotacaoRepository : ICotacaoReadOnlyRepository
 
     public CotacaoRepository(SinqiaCalculatorDbContext dbContext) => _dbContext = dbContext;
 
-    public async Task<IList<Cotacao>> Filter()
+    public async Task<IList<Cotacao>> GetByPeriodAsync(DateTime dataInicio, DateTime dataFim)
     {
-        return await _dbContext.Cotacoes.AsNoTracking().ToListAsync();
+        return await _dbContext.Cotacoes
+            .AsNoTracking()
+            .Where(c => c.Data >= dataInicio && c.Data < dataFim)
+            .OrderBy(c => c.Data)
+            .ToListAsync();
     }
 }

@@ -2,6 +2,7 @@ using Sinqia.Calculator.Application;
 using Sinqia.Calculator.Infrastructure;
 using Sinqia.Calculator.Infrastructure.DataAccess;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -9,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();

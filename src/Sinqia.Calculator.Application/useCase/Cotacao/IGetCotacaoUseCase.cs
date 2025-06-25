@@ -2,5 +2,5 @@
 
 public interface IGetCotacaoUseCase
 {
-    public Task<IList<Domain.Entities.Cotacao>> Execute();
+    public Task<IList<Domain.Entities.Cotacao>> Execute(DateTime dataInicio, DateTime dataFim);
 }

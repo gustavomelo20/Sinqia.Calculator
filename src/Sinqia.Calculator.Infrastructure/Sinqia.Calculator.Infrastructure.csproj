@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Ef.Seeder" Version="1.0.2" />
       <PackageReference Include="FluentMigrator.Runner" Version="7.1.0" />
       <PackageReference Include="FluentMigrator.Runner.SQLite" Version="7.1.0" />
       <PackageReference Include="FluentMigrator.Tools" Version="7.1.0" />

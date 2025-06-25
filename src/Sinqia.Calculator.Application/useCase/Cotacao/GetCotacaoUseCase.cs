@@ -1,4 +1,6 @@
-﻿using Sinqia.Calculator.Domain.Repositories;
+﻿
+
+using Sinqia.Calculator.Domain.Repositories.Cotacao;
 
 namespace Sinqia.Calculator.Application.useCase.Cotacao;
 
@@ -13,8 +15,8 @@ public class GetCotacaoUseCase : IGetCotacaoUseCase
         _repositoryRead = repositoryRead; 
     }
     
-    public async Task<IList<Domain.Entities.Cotacao>> Execute()
+    public async Task<IList<Domain.Entities.Cotacao>> Execute(DateTime dataInicio, DateTime dataFim)
     {
-       return await _repositoryRead.Filter();
+       return await _repositoryRead.GetByPeriodAsync(dataInicio, dataFim);
     }
 }

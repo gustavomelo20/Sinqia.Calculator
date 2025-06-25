@@ -3,7 +3,7 @@ using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Sinqia.Calculator.Domain.Repositories;
+using Sinqia.Calculator.Domain.Repositories.Cotacao;
 using Sinqia.Calculator.Infrastructure.DataAccess;
 using Sinqia.Calculator.Infrastructure.DataAccess.Repositories;
 
