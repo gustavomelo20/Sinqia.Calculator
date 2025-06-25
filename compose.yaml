@@ -1,0 +1,7 @@
+﻿services:
+  sinqia.calculator.api:
+    image: sinqia.calculator.api
+    build:
+      context: .
+      dockerfile: src/Sinqia.Calculator.Api/Dockerfile
+

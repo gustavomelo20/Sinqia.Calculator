@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BEE24D08-9016-42DE-ABDE-8ABAA5181379}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D779EC1A-410B-48E1-8702-0B63A9DD0A0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{08ED9DCF-F039-448A-AE59-D09F6B07051A}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinqia.Calculator.Tests", "tests\Sinqia.Calculator.Tests\Sinqia.Calculator.Tests.csproj", "{8B466B68-9194-4827-A966-466123686B65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinqia.Calculator.Api", "src\Sinqia.Calculator.Api\Sinqia.Calculator.Api.csproj", "{58D00022-FF8B-4817-95F6-D1171620D09C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinqia.Calculator.Domain", "src\Sinqia.Calculator.Domain\Sinqia.Calculator.Domain.csproj", "{5869A822-FB5F-4D21-B3BC-798CA03FE26C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinqia.Calculator.Application", "src\Sinqia.Calculator.Application\Sinqia.Calculator.Application.csproj", "{6E7D5525-2505-4928-84FE-2B5416B17C5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinqia.Calculator.Infrastructure", "src\Sinqia.Calculator.Infrastructure\Sinqia.Calculator.Infrastructure.csproj", "{44EBA2F7-C722-4906-973C-E7B0F33CC7D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B466B68-9194-4827-A966-466123686B65} = {D779EC1A-410B-48E1-8702-0B63A9DD0A0D}
+		{58D00022-FF8B-4817-95F6-D1171620D09C} = {BEE24D08-9016-42DE-ABDE-8ABAA5181379}
+		{5869A822-FB5F-4D21-B3BC-798CA03FE26C} = {BEE24D08-9016-42DE-ABDE-8ABAA5181379}
+		{6E7D5525-2505-4928-84FE-2B5416B17C5A} = {BEE24D08-9016-42DE-ABDE-8ABAA5181379}
+		{44EBA2F7-C722-4906-973C-E7B0F33CC7D9} = {BEE24D08-9016-42DE-ABDE-8ABAA5181379}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B466B68-9194-4827-A966-466123686B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B466B68-9194-4827-A966-466123686B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B466B68-9194-4827-A966-466123686B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B466B68-9194-4827-A966-466123686B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D00022-FF8B-4817-95F6-D1171620D09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D00022-FF8B-4817-95F6-D1171620D09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D00022-FF8B-4817-95F6-D1171620D09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D00022-FF8B-4817-95F6-D1171620D09C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5869A822-FB5F-4D21-B3BC-798CA03FE26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5869A822-FB5F-4D21-B3BC-798CA03FE26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5869A822-FB5F-4D21-B3BC-798CA03FE26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5869A822-FB5F-4D21-B3BC-798CA03FE26C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E7D5525-2505-4928-84FE-2B5416B17C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E7D5525-2505-4928-84FE-2B5416B17C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E7D5525-2505-4928-84FE-2B5416B17C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E7D5525-2505-4928-84FE-2B5416B17C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44EBA2F7-C722-4906-973C-E7B0F33CC7D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44EBA2F7-C722-4906-973C-E7B0F33CC7D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44EBA2F7-C722-4906-973C-E7B0F33CC7D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44EBA2F7-C722-4906-973C-E7B0F33CC7D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
