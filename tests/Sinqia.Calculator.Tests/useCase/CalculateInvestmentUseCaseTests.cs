@@ -45,4 +45,31 @@ public class CalculateInvestmentUseCaseTests
         result.StartDate.Should().Be(request.StartDate);
         result.EndDate.Should().Be(request.EndDate);
     }
+    
+    [Fact]
+    public async Task Should_IgnoreQuotationsOutsideDateRange()
+    {
+        var request = new CalculateInvestmentRequest
+        {
+            InvestedAmount = 1000,
+            StartDate = new DateTime(2024, 01, 01),
+            EndDate = new DateTime(2024, 01, 10)
+        };
+
+        var quotations = new List<Domain.Entities.Cotacao>
+        {
+            new Domain.Entities.Cotacao { Data = new DateTime(2023, 12, 31), Valor = 13.65m }, 
+            new Domain.Entities.Cotacao { Data = new DateTime(2024, 01, 05), Valor = 13.65m },
+            new Domain.Entities.Cotacao { Data = new DateTime(2024, 01, 11), Valor = 13.65m },
+        };
+
+        _repositoryMock
+            .Setup(r => r.GetByPeriodAsync(request.StartDate, request.EndDate))
+            .ReturnsAsync(quotations);
+        
+        var result = await _useCase.ExecuteAsync(request);
+
+        result.AccumulatedFactor.Should().BeGreaterThan(1);
+        result.UpdatedAmount.Should().BeGreaterThan(1000);
+    }
 }
