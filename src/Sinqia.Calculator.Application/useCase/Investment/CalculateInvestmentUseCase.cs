@@ -9,9 +9,9 @@ public class CalculateInvestmentUseCase : ICalculateInvestmentUseCase
 {
     private readonly ICotacaoReadOnlyRepository _readOnlyRepository;
 
-    public CalculateInvestmentUseCase(ICotacaoReadOnlyRepository cotacaoRepository)
+    public CalculateInvestmentUseCase(ICotacaoReadOnlyRepository readOnlyRepository)
     {
-        _readOnlyRepository = cotacaoRepository;
+        _readOnlyRepository = readOnlyRepository;
     }
 
     public async Task<CalculateInvestmentResponse> ExecuteAsync(CalculateInvestmentRequest request)
