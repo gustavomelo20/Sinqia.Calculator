@@ -44,7 +44,9 @@ public class CalculateInvestmentUseCase : ICalculateInvestmentUseCase
     private List<Domain.Entities.Cotacao> FilterBusinessDays(IEnumerable<Domain.Entities.Cotacao> quotations, DateTime start, DateTime end)
     {
         return quotations
-            .Where(q => q.Data > start && q.Data < end)
+            .Where(q => q.Data >= start && q.Data <= end
+                                        && q.Data.DayOfWeek != DayOfWeek.Saturday
+                                        && q.Data.DayOfWeek != DayOfWeek.Sunday)
             .OrderBy(q => q.Data)
             .ToList();
     }
