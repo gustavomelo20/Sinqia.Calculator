@@ -9,10 +9,10 @@ public class CalculateInvestmentValidator: AbstractValidator<CalculateInvestment
     {
         RuleFor(x => x.InvestedAmount)
             .GreaterThan(0)
-            .WithMessage("O valor investido deve ser maior que zero.");
+            .WithMessage("The amount invested must be greater than zero.");
 
         RuleFor(x => x.EndDate)
             .GreaterThan(x => x.StartDate)
-            .WithMessage("A data final deve ser maior que a data de aplicação.");
+            .WithMessage("The end date must be greater than the application date.");
     }
 }
