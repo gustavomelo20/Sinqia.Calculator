@@ -33,3 +33,6 @@ Thumbs.db
 
 #Ignorar o sqlite
 *.db
+
+# Ignorar appsettings files
+appsettings.Development.json
