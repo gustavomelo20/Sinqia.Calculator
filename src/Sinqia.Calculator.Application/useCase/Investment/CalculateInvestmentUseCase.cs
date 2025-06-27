@@ -12,7 +12,7 @@ public class CalculateInvestmentUseCase : ICalculateInvestmentUseCase
     private readonly ILogger _logger;
     public CalculateInvestmentUseCase(
         ICotacaoReadOnlyRepository readOnlyRepository,
-        ILogger<CalculateInvestmentUseCase> logger
+        ILogger logger
     )
     {
         _readOnlyRepository = readOnlyRepository;

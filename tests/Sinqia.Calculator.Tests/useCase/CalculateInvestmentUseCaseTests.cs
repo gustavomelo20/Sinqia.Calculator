@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using Sinqia.Calculator.Application.useCase.Investment;
 using Sinqia.Calculator.Domain.Dtos.Request;
@@ -9,12 +10,18 @@ namespace Sinqia.Calculator.Tests.useCase;
 public class CalculateInvestmentUseCaseTests
 {
     private readonly  Mock<ICotacaoReadOnlyRepository> _repositoryMock;
+    private readonly  Mock<ILogger> _loogerMock;
     private readonly CalculateInvestmentUseCase _useCase;
 
     public CalculateInvestmentUseCaseTests()
     {
         _repositoryMock = new Mock<ICotacaoReadOnlyRepository>();
-        _useCase = new CalculateInvestmentUseCase(_repositoryMock.Object);
+        _loogerMock = new Mock<ILogger>();
+        
+        _useCase = new CalculateInvestmentUseCase(
+            _repositoryMock.Object, 
+            _loogerMock.Object
+         );
     }
 
     [Fact]
