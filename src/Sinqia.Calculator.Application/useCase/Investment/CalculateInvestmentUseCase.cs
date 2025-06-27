@@ -1,4 +1,5 @@
-﻿using Sinqia.Calculator.Application.Exceptions;
+﻿using Microsoft.Extensions.Logging;
+using Sinqia.Calculator.Application.Exceptions;
 using Sinqia.Calculator.Domain.Dtos.Request;
 using Sinqia.Calculator.Domain.Dtos.Responses;
 using Sinqia.Calculator.Domain.Repositories.Cotacao;
@@ -8,10 +9,14 @@ namespace Sinqia.Calculator.Application.useCase.Investment;
 public class CalculateInvestmentUseCase : ICalculateInvestmentUseCase
 {
     private readonly ICotacaoReadOnlyRepository _readOnlyRepository;
-
-    public CalculateInvestmentUseCase(ICotacaoReadOnlyRepository readOnlyRepository)
+    private readonly ILogger _logger;
+    public CalculateInvestmentUseCase(
+        ICotacaoReadOnlyRepository readOnlyRepository,
+        ILogger<CalculateInvestmentUseCase> logger
+    )
     {
         _readOnlyRepository = readOnlyRepository;
+        _logger = logger;
     }
 
     public async Task<CalculateInvestmentResponse> ExecuteAsync(CalculateInvestmentRequest request)
@@ -85,7 +90,7 @@ public class CalculateInvestmentUseCase : ICalculateInvestmentUseCase
         if (!result.IsValid) 
         {
             var errorMessages = result.Errors.Select(e => e.ErrorMessage).ToList();
-
+            _logger.LogWarning("Erro de validação ao processar a requisição: {Errors}", string.Join("; ", errorMessages));
             throw new ErrorOnValidationException(errorMessages);
         }
     }
