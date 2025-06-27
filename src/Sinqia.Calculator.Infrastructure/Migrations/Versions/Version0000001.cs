@@ -2,7 +2,7 @@
 
 namespace Sinqia.Calculator.Infrastructure.Migrations.Versions;
 
-[Migration(202406240001, "Create table to save the user's information")]
+[Migration(202406240001)]
 public class Version0000001 : VersionBase
 {
     public override void Up()
